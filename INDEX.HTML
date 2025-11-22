@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pragyan Kumbhakar | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code&display=swap"
+        rel="stylesheet">
+    <style>
+        /* --- CODER THEME VARIABLES --- */
+        :root {
+            --bg-dark: #0a192f;
+            /* Deep navy background */
+            --card-dark: #112240;
+            /* Slightly lighter card background */
+            --text-primary: #ccd6f6;
+            /* Off-white text */
+            --text-secondary: #8892b0;
+            /* Light gray text */
+            --accent-cyan: #64ffda;
+            /* Neon cyan accent */
+            --font-main: 'Poppins', sans-serif;
+            --font-code: 'Fira Code', monospace;
+        }
+
+        /* GENERAL STYLES */
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-dark);
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* LINKS BUTTONS */
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .btn-link {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            border-radius: 4px;
+            font-family: var(--font-code);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            background: transparent;
+        }
+
+        .btn-link:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* HEADER SECTION */
+        .header-container {
+            display: flex;
+            align-items: center;
+            background: var(--card-dark);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+            margin-bottom: 50px;
+            border: 1px solid #233554;
+        }
+
+        .profile-photo-container {
+            margin-right: 40px;
+            flex-shrink: 0;
+        }
+
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(100, 255, 218, 0.2);
+        }
+
+        .header-text h1 {
+            margin: 0;
+            color: var(--text-primary);
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .header-text h2 {
+            margin: 5px 0 10px 0;
+            color: var(--accent-cyan);
+            font-weight: 600;
+            font-size: 1.3rem;
+            font-family: var(--font-code);
+        }
+
+        .location-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .intro-text {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+        }
+
+        .highlight {
+            color: var(--accent-cyan);
+        }
+
+        /* SECTIONS & CARDS */
+        .section-title {
+            display: flex;
+            align-items: center;
+            color: var(--text-primary);
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 1px;
+            background: #233554;
+            margin-left: 20px;
+        }
+
+        .card {
+            background: var(--card-dark);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #233554;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 5px;
+        }
+
+        .item-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .item-subtitle {
+            font-family: var(--font-code);
+            color: var(--accent-cyan);
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .item-meta {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-family: var(--font-code);
+        }
+
+        .card p,
+        .card ul,
+        .edu-details {
+            color: var(--text-secondary);
+        }
+
+        /* SKILLS GRID */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category h3 {
+            color: var(--accent-cyan);
+            font-family: var(--font-code);
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tech-tag {
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--accent-cyan);
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-family: var(--font-code);
+            font-size: 0.85rem;
+            border: 1px solid var(--accent-cyan);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+            }
+
+            .profile-photo-container {
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+
+            .location-text {
+                justify-content: center;
+            }
+
+            .item-header {
+                flex-direction: column;
+            }
+
+            .section-title::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header class="header-container">
+            <div class="profile-photo-container">
+                <img src="pragyan1.jpg" alt="Pragyan Kumbhakar" class="profile-photo">
+            </div>
+
+            <div class="header-text">
+                <h1>Pragyan Kumbhakar</h1>
+                <h2>Full Stack Developer (MERN) | Google Student Ambassador</h2>
+
+                <div class="location-text">
+                    📍 Rairangpur, Mayurbhanj, Odisha
+                </div>
+
+                <p class="intro-text">
+                    Final-year CSE student at GCE Keonjhar (CGPA: 8.10). I specialize in building robust web
+                    applications and have a strong command of core CS concepts. A competitive programmer with a <span
+                        class="highlight">CodeChef Gold Badge</span> and research experience with <span
+                        class="highlight">DRDO</span>.
+                </p>
+
+                <div>
+                    <a href="tel:+916370848805" class="btn-link">📞 +91-6370848805</a>
+                    <a href="mailto:pragyankumbhakar@gmail.com" class="btn-link">📧 Email Me</a>
+                    <a href="#" class="btn-link">🔗 LinkedIn</a>
+                </div>
+            </div>
+        </header>
+
+        <section>
+            <h2 class="section-title">01. Technical Skills</h2>
+            <div class="card skills-container">
+                <div class="skill-category">
+                    <h3>> Languages</h3>
+                    <div class="skill-tags">
+                        <span class="tech-tag">C</span>
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">C#</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>> MERN Stack</h3>
+                    <div class="skill-tags">
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Express.js</span>
+                        <span class="tech-tag">React.js</span>
+                        <span class="tech-tag">Node.js</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>> Core & Tools</h3>
+                    <div class="skill-tags">
+                        <span class="tech-tag">DSA</span>
+                        <span class="tech-tag">DBMS/SQL</span>
+                        <span class="tech-tag">OS</span>
+                        <span class="tech-tag">Git/GitHub</span>
+                        <span class="tech-tag">OMNeT++</span>
+                        <span class="tech-tag">ASP.NET</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">02. Experience</h2>
+            <div class="card">
+                <div class="item-header">
+                    <span class="item-title">Summer Research Intern</span>
+                    <span class="item-meta">ITR, DRDO</span>
+                </div>
+                <div class="item-subtitle">Integrated Test Range, Defence Research & Development Org</div>
+                <ul>
+                    <li>Assisted in the simulation of mission-critical software modules, focusing on system reliability.
+                    </li>
+                    <li>Optimized testing scripts to streamline data verification processes, reducing manual effort.
+                    </li>
+                    <li>Gained practical experience with defense operational workflows and real-time data systems.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">03. Featured Projects</h2>
+            <div class="card">
+                <div class="item-header">
+                    <span class="item-title">HC-EEP: WSN Protocol (Final Year Project)</span>
+                </div>
+                <div class="item-subtitle">Tech: OMNeT++, C++, AI Scheduling</div>
+                <p>Designed a hybrid energy-efficient protocol for Wireless Sensor Networks. Implemented AI-based
+                    scheduling to optimize cluster-head selection, extending simulated network lifetime by <span
+                        class="highlight">15%</span> compared to standard LEACH protocols.</p>
+            </div>
+
+            <div class="card">
+                <div class="item-header">
+                    <span class="item-title"> Library Management System</span>
+                </div>
+                <div class="item-subtitle">Tech: C#, ASP.NET, SQL Server</div>
+                <p>Developed a full-stack solution featuring relational database management for book records, role-based
+                    user authentication, and real-time transaction tracking.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">04. Education</h2>
+
+            <div class="card">
+                <div class="item-header">
+                    <span class="item-title">B.Tech in Computer Science and Engineering</span>
+                    <span class="item-meta">2022 – 2026</span>
+                </div>
+                <div class="item-subtitle">Government College of Engineering, Keonjhar</div>
+                <div class="edu-details"><strong>CGPA:</strong> <span class="highlight">8.10 / 10.0</span></div>
+            </div>
+
+            <div class="card">
+                <div class="item-header">
+                    <span class="item-title">Higher Secondary Certificate (Class 12)</span>
+                    <span class="item-meta">2020 – 2022</span>
+                </div>
+                <div class="item-subtitle">Pradeep College of Science and Technology, Balasore</div>
+                <div class="edu-details"><strong>Result:</strong> <span class="highlight">82.50%</span></div>
+            </div>
+
+            <div class="card">
+                <div class="item-header">
+                    <span class="item-title">Secondary School Certificate (Class 10)</span>
+                    <span class="item-meta">2020</span>
+                </div>
+                <div class="item-subtitle">Saraswati Sishu Vidya Mandir, Rairangpur</div>
+            </div>
+        </section>
+    </div>
+
+</body>
+
+</html>
